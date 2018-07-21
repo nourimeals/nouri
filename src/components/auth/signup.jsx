@@ -45,7 +45,36 @@ class SignUp extends React.Component {
   handleSignUpSubmit(e){
     e.preventDefault();
     console.log('state on submit', this.state);
-    this.props.userSignUp(this.state);
+    fetch('https://nourimeals.herokuapp.com/api/v0/users', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        body: JSON.stringify({
+          fname: this.state.fname,
+          lname: this.state.lname,
+          email: this.state.email,
+          password: this.state.password,
+          password2: this.state.password2
+        })
+      })
+      .then(res => {
+        if (res.status === 200) {
+          console.log('Response Status', res.status);
+          this.props.userSignUp({
+            isSignedUp: true
+          })
+        } else {
+          this.props.userSignUp({
+            isSignedUp: false
+          })
+        }
+      })
+      .catch(err => {
+        this.props.userSignUp({
+          isSignedUp: false
+        })
+      })
   }
 
 
