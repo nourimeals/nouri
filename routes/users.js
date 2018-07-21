@@ -5,6 +5,8 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
+
+
 const validateRegisterInput = require('../validation/validateRegister');
 const validateSigninInput = require('../validation/signin');
 
@@ -112,6 +114,16 @@ router.post('/signin', (req, res) => {
           }
         });
     });
+});
+
+router.get('/current', passport.authenticate('jwt', {
+  session: false
+}), (req, res) => {
+  res.json({
+    id: req.user.id,
+    fname: req.user.fname,
+    email: req.user.email
+  });
 });
 
 
