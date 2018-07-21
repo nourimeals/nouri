@@ -2,33 +2,33 @@
 
 const fs = require('fs');
 const express = require('express');
-const jsonParser = require('body-parser').json();
+
 const router = express.Router();
 
 
 
-router.get('/api/v0/pool', function (req, res) {
-  console.log('hi there');
+router.get('/api/v0/pool', (req, res) => {
+  console.log('hi there this is the server');
 });
 
-router.get('/api/v0/signin', function (req, res) {
-
-});
-
-
-router.post('/api/v0/signup', jsonParser, function (req, res) {
+router.get('/api/v0/signin', (req, res) => {
 
 });
 
-router.post('/api/v0/donate', jsonParser, function (req, res) {
+
+router.post('/api/v0/signup', (req, res) => {
 
 });
 
-router.post('/api/v0/meals', jsonParser, function (req, res) {
+router.post('/api/v0/donate', (req, res) => {
 
 });
 
-router.put('', jsonParser, (req, res) => {
+router.post('/api/v0/meals', (req, res) => {
+
+});
+
+router.put('', (req, res) => {
 
 });
 
