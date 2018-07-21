@@ -1,11 +1,17 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+import Header from '../header/header.jsx';
+import Footer from '../footer/footer.jsx';
+
+import './home.css';
+
 class Home extends React.Component {
 
   render() {
     return <React.Fragment>
-        <section>
+        <Header />
+        <section class="hero">
           <h1>Help us make the world a better place.</h1>
           <h2>Pay it forward by buying someone a meal.</h2>
           <button>donate</button>
@@ -25,7 +31,7 @@ class Home extends React.Component {
           </div>
         </section>
 
-        <section>
+        <section class="sparkle">
           <h3>participating restaurants</h3>
           <div>
             <h4>Max's Stakehouse</h4>
@@ -48,6 +54,7 @@ class Home extends React.Component {
             <p>Seattle, WA</p>
           </div>
         </section>
+        <Footer />
       </React.Fragment>
   }
 }

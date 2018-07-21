@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import logo from '../../images/nouri-logo.png';
 
-import './header.scss';
+import './header.css';
 
 class Header extends React.Component {
 

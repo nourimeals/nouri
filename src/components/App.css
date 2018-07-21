@@ -1,28 +1,33 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Muli|Ovo');
+
+:root {
+  --cta-bg-color: #FA5457;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+* {
+  font-family: 'Muli', sans-serif;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.hero {
+  background-image: url('../images/hands.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.sparkle{
+  background-image: url('../images/lights.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+button {
+  background-color: var(--cta-bg-color);
+  width: 100%;
+  text-transform: uppercase;
+  padding: 0.75em 0;
   color: white;
+  border: solid 2px white;
 }
 
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}

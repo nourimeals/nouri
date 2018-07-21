@@ -3,18 +3,15 @@ import {connect} from 'react-redux';
 
 import Header from '../header/header.jsx';
 import Footer from '../footer/footer.jsx';
-import Home from '../home/home.jsx';
 
-class Dashboard extends React.Component {
+class Restaurant extends React.Component {
 
   render() {
     return <React.Fragment>
-        <Header />
-          <Home />
-          <div>SignInUp</div>
-          <div>DonateDash</div>
+        <Header/>
           <div>RestaurantDash</div>
-        <Footer />
+         
+      <Footer />
       </React.Fragment>
   }
 }
@@ -31,4 +28,4 @@ const mapDispatchToProps = (dispatch, getState) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Restaurant);

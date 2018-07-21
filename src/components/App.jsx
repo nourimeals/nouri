@@ -7,7 +7,9 @@ import reducers from '../reducers';
 
 import './App.css';
 
-import Dashboard from './dashboard/dashboard.jsx';
+import Home from './home/home.jsx';
+import Donate from './donate/donate.jsx';
+import Restaurant from './restaurant/restaurant.jsx';
 
 const store = createStore(
   reducers,
@@ -16,10 +18,13 @@ const store = createStore(
 
 class App extends Component {
   render() {
-    return (
-      <Provider store={store}>
+    return (<Provider store={store}>
         <BrowserRouter>
-          <Route exact path='/' component={Dashboard} />
+          <div>
+            <Route exact path='/' component={Home} />
+            <Route path='/donate' component={Donate} />
+            <Route path='/restaurant' component={Restaurant} />
+          </div>
         </BrowserRouter>
       </Provider>
     );
