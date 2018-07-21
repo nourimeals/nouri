@@ -1,20 +1,16 @@
 'use strict';
 
-const superagent = require('superagent');
-const User = require('../models/user.js');
-
-
 const fs = require('fs');
 const express = require('express');
 const jsonParser = require('body-parser').json();
 const router = express.Router();
 
 
-router.post('/api/user', jsonParser, function (req, res, next) {
+router.post('/api/user', jsonParser, function (req, res) {
 
 });
 
-router.get('/api/users', function (req, res, next) {
+router.get('/api/users', function (req, res) {
 
 });
 
