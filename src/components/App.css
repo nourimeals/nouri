@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Muli|Ovo');
+
+:root {
+  --cta-bg-color: #FA5457;
+}
+
+* {
+  font-family: 'Muli', sans-serif;
+}
+
+.hero {
+  background-image: url('../images/hands.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.sparkle{
+  background-image: url('../images/lights.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+button {
+  background-color: var(--cta-bg-color);
+  width: 100%;
+  text-transform: uppercase;
+  padding: 0.75em 0;
+  color: white;
+  border: solid 2px white;
+}
+
