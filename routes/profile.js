@@ -8,18 +8,18 @@ const router = express.Router();
 
 const User = require('../models/user');
 
-const Profile = require('../models/profile');
+// const Profile = require('../models/profile');
 
 
 router.get('/', passport.authenticate('jwt', {
   session: false
 }), (req, res) => {
   const errors = {};
-
-  Profile.findOne({
-    user: req.user._id
+  console.log('18 user',req.user);
+  User.findOne({
+    _id: req.user._id
   })
-    .populate('user', ['name', 'donations'])
+    .populate('user', ['fname','lname', 'donations'])
     .then(profile => {
       if (!profile) {
         error.noprofile = 'Theres no prfile for this user';

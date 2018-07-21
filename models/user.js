@@ -38,6 +38,19 @@ const userSchema = new Schema({
   },
   isBusinessUser: {
     type: Boolean,
+    default: false
+
+  },
+
+  donations: [{
+    donationIds: {
+      type: Schema.Types.ObjectId,
+      ref: 'donation',
+    }
+  }],
+
+  totalDonations: {
+    type: Number,
 
   },
 

@@ -1,26 +1,26 @@
-'use strict';
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+// 'use strict';
+// const mongoose = require('mongoose');
+// const Schema = mongoose.Schema;
 
-const ProfileSchema  = new Schema({
-  user: {
-    type : Schema.Types.ObjectId,
-    ref:'user'
-  },
+// const ProfileSchema  = new Schema({
+//   user: {
+//     type : Schema.Types.ObjectId,
+//     ref:'user'
+//   },
 
-  donations: [{
-    donationIds: {
-      type: Schema.Types.ObjectId,
-      ref: 'donation',
-    }
-  }],
+//   donations: [{
+//     donationIds: {
+//       type: Schema.Types.ObjectId,
+//       ref: 'donation',
+//     }
+//   }],
 
-  totalDonations: {
-    type: Number,
+//   totalDonations: {
+//     type: Number,
 
-  }
-});
+//   }
+// });
 
-const Profile = mongoose.model('profile', ProfileSchema);
+// const Profile = mongoose.model('profile', ProfileSchema);
 
-module.exports = Profile;
+// module.exports = Profile;
