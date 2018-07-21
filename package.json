@@ -2,6 +2,10 @@
   "name": "nouri",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": "6.1.0",
+    "node": "10.3.0"
+  },
   "dependencies": {
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
