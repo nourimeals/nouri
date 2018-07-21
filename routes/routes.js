@@ -6,21 +6,21 @@ const jsonParser = require('body-parser').json();
 const router = express.Router();
 
 
-router.post('/api/user', jsonParser, function (req, res) {
+router.post('', jsonParser, function (req, res) {
 
 });
 
-router.get('/api/users', function (req, res) {
+router.get('', function (req, res) {
 
 });
 
-router.get('/api/user/:email', function (req, res) {
+router.get('', function (req, res) {
 
 });
 
 
 
-router.put('/api/user/:email', jsonParser, (req, res) => {
+router.put('', jsonParser, (req, res) => {
 
 });
 
