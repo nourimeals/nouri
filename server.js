@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use('/api/v0', require('./routes/routes.js'));
 app.use('/api/v0/users', require('./routes/users.js'));
+app.use('/api/v0/profile', require('./routes/profile.js'));
 
 const PORT = process.env.PORT || 3000;
 
