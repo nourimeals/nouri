@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const validateRegisterInput = require('../validation/validateRegister');
+const validateSigninInput = require('../validation/signin');
 
 const router = express.Router();
 
@@ -61,5 +62,58 @@ router.post('/', (req, res) => {
       }
     });
 });
+
+router.post('/signin', (req, res) => {
+  const email = req.body.email
+  const password = req.body.password
+
+  const {
+    errors,
+    isValid
+  } = validateSigninInput(req.body)
+
+  if (!isValid) {
+    return res.status(400).json(errors)
+  }
+
+  User.findOne({
+      email
+    })
+    .then(user => {
+      if (!user) {
+        errors.email = 'User not found'
+        return res.status(400).json(errors)
+      }
+
+      bcrypt.compare(password, user.password)
+        .then(isMatch => {
+          if (isMatch) {
+            const payload = {
+              id: user._id,
+              fname: user.fname,
+
+            };
+            jwt.sign(
+              payload,
+              process.env.SECRET_KEY, {
+                //change the time later leave for testing now
+                expiresIn: 9999
+              },
+              (err, token) => {
+                console.log(token)
+                res.json({
+                  success: true,
+                  token: 'Bearer ' + token
+                });
+              });
+          } else {
+            errors.password = 'password incorrect';
+            return res.status(400).json(errors);
+          }
+        });
+    });
+});
+
+
 
 module.exports = router;
