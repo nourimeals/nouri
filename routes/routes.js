@@ -6,19 +6,27 @@ const jsonParser = require('body-parser').json();
 const router = express.Router();
 
 
-router.post('', jsonParser, function (req, res) {
 
+router.get('/api/v0/pool', function (req, res) {
+  console.log('hi there');
 });
 
-router.get('', function (req, res) {
-
-});
-
-router.get('', function (req, res) {
+router.get('/api/v0/signin', function (req, res) {
 
 });
 
 
+router.post('/api/v0/signup', jsonParser, function (req, res) {
+
+});
+
+router.post('/api/v0/donate', jsonParser, function (req, res) {
+
+});
+
+router.post('/api/v0/meals', jsonParser, function (req, res) {
+
+});
 
 router.put('', jsonParser, (req, res) => {
 
@@ -32,3 +40,5 @@ router.put('', jsonParser, (req, res) => {
 router.delete('/api/user/delete/:email', function (req, res) {
 
 });
+
+module.exports = router;
