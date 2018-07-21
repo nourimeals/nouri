@@ -2,6 +2,7 @@
   "name": "nouri",
   "version": "0.1.0",
   "private": true,
+  "main":"server.js",
   "engines": {
     "npm": "6.1.0",
     "node": "10.3.0"
@@ -17,13 +18,14 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
-    "redux": "^4.0.0"
+    "redux": "^4.0.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "validator": "^10.4.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start":"node server.js",
+    "startReact": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
