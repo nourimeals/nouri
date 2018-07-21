@@ -1,9 +1,10 @@
 'use strict';
-
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-require('dotenv').config();
+const passport = require('passport');
+
 
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI)
@@ -12,6 +13,10 @@ mongoose.connect(process.env.MONGODB_URI)
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
+app.use(passport.initialize());
+require('./config/passport')(passport);
+
 app.use(bodyParser.json());
 app.use('/api/v0', require('./routes/routes.js'));
 app.use('/api/v0/users', require('./routes/users.js'));
