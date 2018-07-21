@@ -31,17 +31,6 @@ const userSchema = new Schema({
     type: String,
 
   },
-  donations: [{
-    donationIds: {
-      type: Schema.Types.ObjectId,
-      ref: 'donation',
-    }
-  }],
-
-  totalDonations: {
-    type: Number,
-
-  },
   signupDate: {
     type: Date,
     default: Date.now
