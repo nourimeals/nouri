@@ -10,6 +10,9 @@ import './App.css';
 import Home from './home/home.jsx';
 import Donate from './donate/donate.jsx';
 import Restaurant from './restaurant/restaurant.jsx';
+import SignIn from './auth/signin.jsx';
+import SignUp from './auth/signup.jsx';
+
 
 const store = createStore(
   reducers,
@@ -24,6 +27,8 @@ class App extends Component {
             <Route exact path='/' component={Home} />
             <Route path='/donate' component={Donate} />
             <Route path='/restaurant' component={Restaurant} />
+            <Route path='/signin' component={SignIn} />
+            <Route path='/signup' component={SignUp} />
           </div>
         </BrowserRouter>
       </Provider>
