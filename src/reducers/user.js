@@ -12,7 +12,7 @@ export default function authReducer(state, action) {
     return initialState;
   }
 
-  let newState= {};
+  let newState = {};
   let fname;
   let lname;
   let email;
@@ -21,7 +21,7 @@ export default function authReducer(state, action) {
   let headers;
   let formdata;
 
-  switch(action.type) {
+  switch (action.type) {
     case USER_SIGNUP:
       fname = action.json.fName;
       lname = action.json.lName;
@@ -30,30 +30,30 @@ export default function authReducer(state, action) {
       password2 = action.json.password2;
 
       fetch('https://nourimeals.herokuapp.com/api/v0/users', {
-        method: 'POST',
-        headers: {
-          "Content-Type": "application/json; charset=utf-8"
-        },
-        body: JSON.stringify({
-          fname: fname,
-          lname: lname,
-          email: email,
-          password: password,
-          password2: password2
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json; charset=utf-8"
+          },
+          body: JSON.stringify({
+            fname: fname,
+            lname: lname,
+            email: email,
+            password: password,
+            password2: password2
+          })
         })
-      })
-      .then(res => {
-        console.log('res', res);
-        return Object.assign({}, state, newState);
-      })
-      .catch(err => {
-        console.log(err);
-        return Object.assign({}, state, newState);
-      });
+        .then(res => {
+          console.log('res', res);
+          return Object.assign({}, state, newState);
+        })
+        .catch(err => {
+          console.log(err);
+          return Object.assign({}, state, newState);
+        });
       break;
     case USER_SIGNIN:
       email = action.json.email;
-      password = action.json.password
+      password = action.json.password;
       headers = new Headers();
       formdata = new FormData();
 
@@ -62,20 +62,21 @@ export default function authReducer(state, action) {
       formdata.append('email', email);
       formdata.append('password', password);
 
-      fetch('/api/v0/users', {
-        method: 'POST',
-        headers: headers,
-        body: formdata
-      })
-      .then(res => {
-        console.log('res', res);
-        return Object.assign({}, state, newState);
-      })
-      .catch(err => {
-        console.log(err);
-        return Object.assign({}, state, newState);
-      });
+      fetch('https://nourimeals.herokuapp.com/api/v0/users/signin', {
+          method: 'POST',
+          headers: headers,
+          body: formdata,
+        })
+        .then(res => {
+          console.log('res', res);
+          return Object.assign({}, state, newState);
+        })
+        .catch(err => {
+          console.log(err);
+          return Object.assign({}, state, newState);
+        });
       break;
-    default: return state;
+    default:
+      return state;
   }
 }
