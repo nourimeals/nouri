@@ -77,10 +77,6 @@ class Donate extends React.Component {
 
         <section className= "sparkle">
           <div>
-            <h3>You helped feed</h3>
-            <h2> 82 people </h2>
-          </div>
-          <div>
             <h3> You've Donated</h3>
             <h2>$850</h2>
           </div>

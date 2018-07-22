@@ -31,22 +31,22 @@ class Home extends React.Component {
 
         <section className="sparkle">
           <h3>participating restaurants</h3>
-          <div>
+          <div className="business-info">
             <h4>Max's Stakehouse</h4>
             <p>12345 NE 85th St</p>
             <p>Seattle, WA</p>
           </div>
-          <div>
+          <div className="business-info">
             <h4>Evelyn's Crepe Shop</h4>
             <p>12345 NE 85th St</p>
             <p>Seattle, WA</p>
           </div>
-          <div>
+          <div className="business-info">
             <h4>Yummy Sushi</h4>
             <p>12345 NE 85th St</p>
             <p>Seattle, WA</p>
           </div>
-          <div>
+          <div className="business-info">
             <h4>Hello Burgers</h4>
             <p>12345 NE 85th St</p>
             <p>Seattle, WA</p>

@@ -3,7 +3,7 @@
 }
 
 section {
-  padding: 5%;
+  padding: 20% 10%;
 }
 
 h1 {
@@ -31,3 +31,15 @@ h3 {
   margin: 3% 0;
 }
 
+.business-info {
+  text-align: center;
+}
+
+.business-info h4 {
+  margin-bottom: 1%;
+  font-weight: 800;
+}
+
+.business-info p {
+  margin: 0;
+}
