@@ -10,7 +10,8 @@ class Donate extends React.Component {
 
     this.state = {
       _id: '',
-      amount: ''
+      amount: '',
+      displayThankYou: false
     }
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -56,15 +57,16 @@ class Donate extends React.Component {
       amount: this.state.amount,
     }
 
-    // var headers = new Headers();
-    // headers.append('Authorization', `Bearer ${token}`);
-    // headers.append('amount', this.state.amount);
+
     fetch('https://nourimeals.herokuapp.com/api/v0/donations', {
       method: 'POST',
       headers: headers,
       body: JSON.stringify(body),
     })
       .then(res => {
+        if (res.status === 200) {
+          this.setState({ displayThankYou: true })
+        }
         return res.json()
       })
       .then(json => {
@@ -79,6 +81,7 @@ class Donate extends React.Component {
     return <React.Fragment>
       <Header />
       <section className="hero">
+        {this.state.displayThankYou ? (<p>Thank you so much for your donation! Please check your email for your confirmation.</p>) : (<div></div>)}
         <h1>Make a Donation</h1>
         <form onSubmit={this.handleFormSubmit}>
           <input onChange={this.handleInputChange} name="amount" placeholder="Amount" />
