@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 
 import Header from '../header/header.jsx';
 import Footer from '../footer/footer.jsx';
@@ -42,6 +42,29 @@ class Restaurant extends React.Component {
   handleFormSubmit(e) {
     e.preventDefault();
     console.log('state before meal form subit', this.state);
+
+    let token = sessionStorage.getItem('json.token');
+
+    var headers = new Headers({
+      'Authorization': "Bearer " + token,
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+    
+    fetch('https://nourimeals.herokuapp.com/api/v0/meals/', {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(this.state)
+    })
+    .then(res => {
+      console.log('meals resp', res.body);
+      return res.json
+    })
+    .then(json => {
+      console.log('meals submit json', json);
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 
   render() {
