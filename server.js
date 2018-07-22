@@ -20,7 +20,6 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 
 app.use(bodyParser.json());
-app.use('/api/v0', require('./routes/routes.js'));
 app.use('/api/v0/users', require('./routes/users.js'));
 app.use('/api/v0/profile', require('./routes/profiles.js'));
 app.use('/api/v0/donations', require('./routes/donations.js'));
