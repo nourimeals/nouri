@@ -4,6 +4,7 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border-top: solid 1px gray;
 }
 
 #footer-logo {

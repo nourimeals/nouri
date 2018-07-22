@@ -8,8 +8,7 @@ import reducers from '../reducers';
 import './App.css';
 
 import Home from './home/home.jsx';
-import Donate from './donate/donate.jsx';
-import Restaurant from './restaurant/restaurant.jsx';
+import Dashboard from './dashboard/dashboard.jsx';
 import SignIn from './auth/signin.jsx';
 import SignUp from './auth/signup.jsx';
 import PrivateRoute from './auth/private-route.jsx';
@@ -26,14 +25,10 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Route exact path='/' component={Home} />
-            <Route path='/restaurant' component={Restaurant} />
             <Route path='/signin' component={SignIn} />
             <Route path='/signup' component={SignUp} />
             <Switch>
-              <PrivateRoute path='/donate' component={Donate} />
-            </Switch>
-            <Switch>
-              <PrivateRoute path='/restaurants' component={Restaurant} />
+              <PrivateRoute path='/dashboard' component={Dashboard} />
             </Switch>
           </div>
         </BrowserRouter>

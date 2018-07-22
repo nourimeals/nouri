@@ -1,4 +1,5 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import {
   connect
@@ -54,27 +55,34 @@ class SignIn extends React.Component {
       .then(res => {
         if (res.status === 200) {
           console.log('Response Status', res);
-          this.props.userSignIn({
-            isSignedIn: true
-          })
           return res.json();
         } else {
           this.props.userSignIn({
-            isSignedIn: false
+            isSignedIn: false,
           })
         }
       })
       .then(json => {
-        console.log(json.token, 'token here')
+        console.log('json', json);
+        console.log(json.token, 'token here');
         window.sessionStorage.token = json.token;
 
-        const decoded = jwtDecode(json.token)
-        this.props.setCurrentUser(decoded)
-        console.log(decoded, 'this is decoded')
+        const decoded = jwtDecode(json.token);
+        this.props.setCurrentUser(decoded);
+        console.log(decoded, 'this is decoded');
+        return decoded;
+      })
+      .then(decoded => {
+        this.props.userSignIn({
+          isSignedIn: true,
+          name: decoded.name,
+          userId: decoded.id,
+          isBusinessUser: decoded.isBusinessUser
+        })
       })
       .catch(err => {
         this.props.userSignIn({
-          isSignedIn: false
+          isSignedIn: false,
         })
       })
   }
@@ -82,14 +90,16 @@ class SignIn extends React.Component {
   render() {
     return <React.Fragment>
       <Header />
-      <section className="hero">
+      {this.props.user.isSignedIn ? (
+          <Redirect to="/dashboard" />
+        ) : (<section className="hero">
         <h1>Sign In to Your Dashboard</h1>
         <form onSubmit={this.handleSignInSubmit}>
           <input placeholder="email" onChange={this.handleInputChange} name="email" />
           <input placeholder="password" onChange={this.handleInputChange} name="password" />
           <button type="submit"> SUBMIT </button>
         </form>
-      </section>
+      </section>)}
       <Footer />
     </React.Fragment>
   }
@@ -97,7 +107,7 @@ class SignIn extends React.Component {
 
 const mapStateToProps = state => {
   return {
-
+    user: state.user
   }
 };
 
@@ -105,7 +115,6 @@ const mapDispatchToProps = (dispatch, getState) => {
   return {
     userSignIn: json => dispatch(userSignIn(json)),
     setCurrentUser: data => dispatch(setCurrentUser(data))
-
   }
 }
 

@@ -11,14 +11,14 @@
 .hero {
   padding-top: 20%;
   padding-bottom: 20%;
-  background-image: url('../images/hands.jpg');
+  background-image: url('../images/hands2.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .sparkle{
-  background-image: url('../images/lights.jpg');
+  background-image: url('../images/lights2.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

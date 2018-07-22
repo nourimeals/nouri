@@ -10,7 +10,7 @@ class Restaurant extends React.Component {
     return <React.Fragment>
         <Header />
         <section className="hero">
-          <h1>Make a Donation</h1>
+          <h1>Submit a Receipt/Meal Traction</h1>
           <form>
             <input placeholder="Amount"/>
            <input placeholder="Name"/>
