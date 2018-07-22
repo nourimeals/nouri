@@ -11,7 +11,7 @@ class Restaurant extends React.Component {
 
     this.state = {
       restaurant: this.props.user.userId,
-      mealCost: '',
+      mealCost: 0,
       patron: '',
       story: ''
     }
@@ -21,10 +21,9 @@ class Restaurant extends React.Component {
   }
 
   handleInputChange(e) {
-    console.log('target name', e.target.name, 'value', e.target.value)
     if (e.target.name === 'mealCost') {
       this.setState({
-        mealCost: e.target.value
+        mealCost: parseInt(e.target.value, 10)
       });
     }
     if (e.target.name === 'patron') {
@@ -43,21 +42,31 @@ class Restaurant extends React.Component {
     e.preventDefault();
     console.log('state before meal form subit', this.state);
 
-    let token = sessionStorage.getItem('json.token');
+    let token = sessionStorage.getItem('token');
+
+    console.log('Authorization', token);
 
     var headers = new Headers({
-      'Authorization': "Bearer " + token,
-      'Content-Type': 'application/x-www-form-urlencoded'
+      'Authorization': token,
+      'Content-Type': 'application/json'
     });
+
+
+    let body = {
+      restaurant: this.state.restaurant,
+      mealCost: this.state.mealCost,
+      patron: this.state.patron,
+      story: this.state.story
+    }
     
-    fetch('https://nourimeals.herokuapp.com/api/v0/meals/', {
+    fetch('https://nourimeals.herokuapp.com/api/v0/meals', {
       method: 'POST',
       headers: headers,
-      body: JSON.stringify(this.state)
+      body: JSON.stringify(body)
     })
     .then(res => {
       console.log('meals resp', res.body);
-      return res.json
+      return res.json()
     })
     .then(json => {
       console.log('meals submit json', json);
