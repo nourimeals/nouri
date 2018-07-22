@@ -11,6 +11,7 @@ class Donate extends React.Component {
     this.state = {
       _id: '',
       amount: '',
+      email: '',
       cc: '',
       exp: '',
       cvv: '',
@@ -71,7 +72,8 @@ class Donate extends React.Component {
           amount: '',
           cc: '',
           exp: '',
-          cvv: ''
+          cvv: '',
+          email: ''
         });
       })
       .catch(err => {
