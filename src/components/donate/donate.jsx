@@ -39,17 +39,33 @@ class Donate extends React.Component {
   handleFormSubmit(e) {
     e.preventDefault();
 
-    let token = sessionStorage.getItem('json.token');
+    console.log('state before meal form subit', this.state);
 
-    var headers = new Headers();
-    headers.append('Authorization', `Bearer ${token}`);
-    headers.append('amount', this.state.amount);
-    fetch('https://nourimeals.herokuapp.com/api/v0/donate/', {
+    let token = sessionStorage.getItem('token');
+
+    console.log('Authorization', token);
+
+
+    var headers = new Headers({
+      'Authorization': token,
+      'Content-Type': 'application/json'
+    });
+
+    let body = {
+      _id: this.state._id,
+      amount: this.state.amount,
+    }
+
+    // var headers = new Headers();
+    // headers.append('Authorization', `Bearer ${token}`);
+    // headers.append('amount', this.state.amount);
+    fetch('https://nourimeals.herokuapp.com/api/v0/donations', {
       method: 'POST',
       headers: headers,
+      body: JSON.stringify(body),
     })
       .then(res => {
-        return res.json
+        return res.json()
       })
       .then(json => {
         console.log('donate submit json', json);
