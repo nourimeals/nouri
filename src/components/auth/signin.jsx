@@ -1,5 +1,7 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import {
+  connect
+} from 'react-redux';
 
 import Header from '../header/header.jsx';
 import Footer from '../footer/footer.jsx';
@@ -23,39 +25,73 @@ class SignIn extends React.Component {
 
   handleInputChange(e) {
     if (e.target.name === 'email') {
-      this.setState({email: e.target.value});
+      this.setState({
+        email: e.target.value
+      });
     }
     if (e.target.name === 'password') {
-      this.setState({password: e.target.value});
+      this.setState({
+        password: e.target.value
+      });
     }
   }
 
-  handleSignInSubmit(e){
+  handleSignInSubmit(e) {
     e.preventDefault();
     console.log('state on submit', this.state);
-    this.props.userSignIn(this.state);
+    fetch('https://nourimeals.herokuapp.com/api/v0/users/signin', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password,
+      })
+    })
+      .then(res => {
+        if (res.status === 200) {
+          console.log('Response Status', res);
+          this.props.userSignIn({
+            isSignedIn: true
+          })
+          return res.json();
+        } else {
+          this.props.userSignIn({
+            isSignedIn: false
+          })
+        }
+      })
+      .then(json => {
+        console.log(json.token, 'token here')
+        window.sessionStorage.token = json.token;
+      })
+      .catch(err => {
+        this.props.userSignIn({
+          isSignedIn: false
+        })
+      })
   }
-
 
   render() {
     return <React.Fragment>
-        <Header />
-        <section className="hero">
-          <h1>Sign In to Your Dashboard</h1>
-          <form onSubmit={this.handleSignInSubmit}>
-          <input placeholder="email" onChange={this.handleInputChange} name="email"/>
-           <input placeholder="password" onChange={this.handleInputChange} name="password"/>
-           <button type="submit"> SUBMIT </button>
-          </form>
-        </section> 
-      <Footer/>
-      </React.Fragment>
+      <Header />
+      <section className="hero">
+        <h1>Sign In to Your Dashboard</h1>
+        <form onSubmit={this.handleSignInSubmit}>
+          <input placeholder="email" onChange={this.handleInputChange} name="email" />
+          <input placeholder="password" onChange={this.handleInputChange} name="password" />
+          <button type="submit"> SUBMIT </button>
+        </form>
+      </section>
+      <Footer />
+    </React.Fragment>
   }
 }
 
 const mapStateToProps = state => {
   return {
-    
+
   }
 };
 
