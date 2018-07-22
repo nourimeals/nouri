@@ -1,7 +1,12 @@
-import {combineReducers} from 'redux';
+import {
+  combineReducers
+} from 'redux';
 
-import donateApp from './donate.js';
+import authReducer from './user.js';
+import donateReducer from './donate.js';
+
 
 export default combineReducers({
-  donates: donateApp
+  donations: donateReducer,
+  user: authReducer
 });

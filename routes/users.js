@@ -82,9 +82,10 @@ router.post('/signin', (req, res) => {
       email
     })
     .then(user => {
+      console.log(user, 'user');
       if (!user) {
-        errors.email = 'User not found'
-        return res.status(400).json(errors)
+        errors.email = 'User not found';
+        return res.status(400).json(errors);
       }
 
       bcrypt.compare(password, user.password)
@@ -102,7 +103,7 @@ router.post('/signin', (req, res) => {
                 expiresIn: 9999
               },
               (err, token) => {
-                console.log(token)
+                console.log(token);
                 res.json({
                   success: true,
                   token: 'Bearer ' + token

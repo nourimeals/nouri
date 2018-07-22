@@ -11,7 +11,7 @@ class Home extends React.Component {
   render() {
     return <React.Fragment>
         <Header />
-        <section class="hero">
+        <section className="hero">
           <h1>Help us make the world a better place.</h1>
           <h2>Pay it forward by buying someone a meal.</h2>
           <button>donate</button>
@@ -31,7 +31,7 @@ class Home extends React.Component {
           </div>
         </section>
 
-        <section class="sparkle">
+        <section className="sparkle">
           <h3>participating restaurants</h3>
           <div>
             <h4>Max's Stakehouse</h4>
