@@ -1,4 +1,5 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 import {
   connect
 } from 'react-redux';
@@ -76,14 +77,16 @@ class SignIn extends React.Component {
   render() {
     return <React.Fragment>
       <Header />
-      <section className="hero">
+      {this.props.user.isSignedIn ? (
+          <Redirect to="/dashboard" />
+        ) : (<section className="hero">
         <h1>Sign In to Your Dashboard</h1>
         <form onSubmit={this.handleSignInSubmit}>
           <input placeholder="email" onChange={this.handleInputChange} name="email" />
           <input placeholder="password" onChange={this.handleInputChange} name="password" />
           <button type="submit"> SUBMIT </button>
         </form>
-      </section>
+      </section>)}
       <Footer />
     </React.Fragment>
   }
@@ -91,7 +94,7 @@ class SignIn extends React.Component {
 
 const mapStateToProps = state => {
   return {
-
+    user: state.user
   }
 };
 
