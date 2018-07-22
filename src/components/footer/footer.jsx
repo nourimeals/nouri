@@ -1,13 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+import './footer.css';
+import logo from '../../images/nouri-logo.png';
+
 class Footer extends React.Component {
 
   render() {
-    return <React.Fragment>
-        <div>Nouri Meals</div>
-        <div>Terms of Service</div>
-      </React.Fragment>
+    return <footer>
+        <img src={logo} alt="nouri logo" id="footer-logo"/>
+        <small>Terms of Service | Privacy Policy</small>
+      </footer>
   }
 }
 
