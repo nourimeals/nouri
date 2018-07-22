@@ -11,9 +11,9 @@ export default function donateReducer(state, action) {
     return initialState;
   }
 
-  let newState= {};
+  let newState = {};
 
-  switch(action.type) {
+  switch (action.type) {
     case DONATE_POST:
       return Object.assign({}, state, newState);
     default: return state;
