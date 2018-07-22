@@ -1,5 +1,9 @@
 import React from 'react';
+<<<<<<< HEAD
 import {Redirect} from 'react-router-dom';
+=======
+import jwtDecode from 'jwt-decode';
+>>>>>>> cc311a5653909a15852c6e8701f4b5c383822915
 import {
   connect
 } from 'react-redux';
@@ -9,6 +13,7 @@ import Footer from '../footer/footer.jsx';
 
 import {
   userSignIn,
+  setCurrentUser,
 } from '../../actions/user.js';
 
 class SignIn extends React.Component {
@@ -65,11 +70,18 @@ class SignIn extends React.Component {
         console.log('json', json);
         console.log(json.token, 'token here')
         window.sessionStorage.token = json.token;
+<<<<<<< HEAD
         this.props.userSignIn({
           isSignedIn: true,
           userId: json.userId,
           isBusinessOwner: json.isBusinessOwner
         })
+=======
+
+        const decoded = jwtDecode(json.token)
+        this.props.setCurrentUser(decoded)
+        console.log(decoded, 'this is decoded')
+>>>>>>> cc311a5653909a15852c6e8701f4b5c383822915
       })
       .catch(err => {
         this.props.userSignIn({
@@ -104,7 +116,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch, getState) => {
   return {
-    userSignIn: json => dispatch(userSignIn(json))
+    userSignIn: json => dispatch(userSignIn(json)),
+    setCurrentUser: data => dispatch(setCurrentUser(data))
+
   }
 }
 

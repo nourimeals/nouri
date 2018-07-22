@@ -7,7 +7,7 @@ const router = express.Router();
 
 
 
-router.get('/api/v0/pool', (req, res) => {
+router.get('/', (req, res) => {
   console.log('hi there this is the server');
 });
 
