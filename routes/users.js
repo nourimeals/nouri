@@ -106,7 +106,9 @@ router.post('/signin', (req, res) => {
                 console.log(token);
                 res.json({
                   success: true,
-                  token: 'Bearer ' + token
+                  token: 'Bearer ' + token,
+                  userId: user._id,
+                  isBusinessUser: user.isBusinessUser
                 });
               });
           } else {

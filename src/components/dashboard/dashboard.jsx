@@ -8,15 +8,14 @@ class Dashboard extends React.Component {
 
   render() {
     return <React.Fragment>
-        <Donate />
-        <Restaurant />
+        {this.props.user.isBusinessUser ? (<Restaurant />) : (<Donate />)}
       </React.Fragment>
   }
 }
 
 const mapStateToProps = state => {
   return {
-    
+    user: state.user
   }
 };
 

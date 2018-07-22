@@ -53,23 +53,27 @@ class SignIn extends React.Component {
       .then(res => {
         if (res.status === 200) {
           console.log('Response Status', res);
-          this.props.userSignIn({
-            isSignedIn: true
-          })
+
           return res.json();
         } else {
           this.props.userSignIn({
-            isSignedIn: false
+            isSignedIn: false,
           })
         }
       })
       .then(json => {
+        console.log('json', json);
         console.log(json.token, 'token here')
         window.sessionStorage.token = json.token;
+        this.props.userSignIn({
+          isSignedIn: true,
+          userId: json.userId,
+          isBusinessOwner: json.isBusinessOwner
+        })
       })
       .catch(err => {
         this.props.userSignIn({
-          isSignedIn: false
+          isSignedIn: false,
         })
       })
   }

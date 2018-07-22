@@ -15,19 +15,17 @@ class Home extends React.Component {
           <h1>Help us make the world a better place.</h1>
           <h2>Pay it forward by buying someone a meal.</h2>
           <button>donate</button>
-          <div>$1,500 meals served</div>
-          <div>$1,489,928 Donation Pool</div>
+          <div className="stats">$1,500 meals served</div>
+          <div className="stats">$1,489,928 Donation Pool</div>
         </section>
 
         <section>
           <h3>latest news</h3>
           <div>
-            <p>"I was haivng a bad day. I lost my wallet and was really hungry. glas I found out about Hello Burgers and Nouri Meals!</p>
-            <small>Annie C</small>
+            <p>"I was haivng a bad day. I lost my wallet and was really hungry. glas I found out about Hello Burgers and Nouri Meals!<span> - Annie C.</span></p>
           </div>
           <div>
-            <p>Max's Steakhouse joins the Nouri Network!</p>
-            <small>Nouri Team</small>
+            <p>Max's Steakhouse joins the Nouri Network!<span> - Nouri Team</span></p>
           </div>
         </section>
 
