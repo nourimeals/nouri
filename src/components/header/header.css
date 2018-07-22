@@ -1,10 +1,21 @@
 header {
-  display: flex;
-  justify-content: space-between;
   padding: 5%;
+  background-color: transparent;
+  position: fixed;
 }
 
 #logo {
   width: 75px;
   height: 40px;
+}
+
+#menu-toggle {
+  background-color: transparent;
+  border: none;
+  color: black;
+  width: 50px;
+  float: right;
+  position: fixed;
+  top: 1.5%;
+  right: 5%;
 }

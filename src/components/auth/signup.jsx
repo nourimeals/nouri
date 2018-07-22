@@ -1,8 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 import Header from '../header/header.jsx';
 import Footer from '../footer/footer.jsx';
+
+import './auth.css';
 
 import {
   userSignUp,
@@ -81,7 +84,15 @@ class SignUp extends React.Component {
   render() {
     return <React.Fragment>
         <Header />
-        <section className="hero">
+        {this.props.user.isSignedUp ? (
+          <section className="hero">
+            <h1>Thank you for signing up!</h1>
+            <Link to={'/signin'}>
+              <button>Sign in to your account</button>
+            </Link>
+          </section>
+        ) : (
+          <section className="hero">
           <h1>Sign Up </h1>
           <form onSubmit={this.handleSignUpSubmit}>
           <input placeholder = "first name" onChange={this.handleInputChange} name="fname"/>
@@ -91,7 +102,8 @@ class SignUp extends React.Component {
            <input placeholder="password2" onChange={this.handleInputChange} name="password2"/>
            <button type="submit"> SUBMIT </button>
           </form>
-        </section> 
+          </section> 
+        )}
       <Footer/>
       </React.Fragment>
   }
@@ -99,7 +111,7 @@ class SignUp extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    
+    user: state.user
   }
 };
 

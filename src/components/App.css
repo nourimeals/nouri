@@ -9,6 +9,8 @@
 }
 
 .hero {
+  padding-top: 20%;
+  padding-bottom: 20%;
   background-image: url('../images/hands.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -31,3 +33,13 @@ button {
   border: solid 2px white;
 }
 
+input {
+  width: 89%;
+  height: 40px;
+  margin-bottom: 5%;
+  border: solid 2px white;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.209);
+  color: white;
+  padding: 0 5%;
+}
