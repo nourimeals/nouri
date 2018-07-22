@@ -93,7 +93,7 @@ class Restaurant extends React.Component {
     return <React.Fragment>
         <Header />
         <section className="hero">
-          {this.state.displayThankYou ? (<p>Thank you so much for your donation! Please check your email for your confirmation.</p>) : (<div></div>)}
+          {this.state.displayThankYou ? (<p>Thank you so much for your submission! Please check your email for your confirmation.</p>) : (<div></div>)}
           <h1>Submit a Receipt/Meal Traction</h1>
           <form onSubmit={this.handleFormSubmit}>
             <input onChange={this.handleInputChange} name="mealCost" placeholder="Meal Cost"/>
