@@ -5,6 +5,8 @@ import {connect} from 'react-redux';
 import Header from '../header/header.jsx';
 import Footer from '../footer/footer.jsx';
 
+import './restaurant.css';
+
 class Restaurant extends React.Component {
   constructor(props) {
     super(props);
@@ -13,12 +15,20 @@ class Restaurant extends React.Component {
       restaurant: this.props.user.userId,
       mealCost: 0,
       patron: '',
-      story: ''
+      story: '',
+      displayThankYou: false
     }
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    // this.toggleThankYou = this.toggleThankYou.bind(this);
   }
+
+  // toggleThankYou() {
+  //   this.setState({
+  //     displayThankYou: !this.state.displayThankYou
+  //   });
+  // }
 
   handleInputChange(e) {
     if (e.target.name === 'mealCost') {
@@ -65,7 +75,10 @@ class Restaurant extends React.Component {
       body: JSON.stringify(body)
     })
     .then(res => {
-      console.log('meals resp', res.body);
+      if (res.status === 200) {
+        console.log('status is', res.status);
+        this.setState({displayThankYou: true})
+      }
       return res.json()
     })
     .then(json => {
@@ -80,6 +93,7 @@ class Restaurant extends React.Component {
     return <React.Fragment>
         <Header />
         <section className="hero">
+          {this.state.displayThankYou ? (<p>Thank you so much for your submission! Please check your email for your confirmation.</p>) : (<div></div>)}
           <h1>Submit a Receipt/Meal Traction</h1>
           <form onSubmit={this.handleFormSubmit}>
             <input onChange={this.handleInputChange} name="mealCost" placeholder="Meal Cost"/>
