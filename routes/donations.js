@@ -8,6 +8,8 @@ const router = express.Router();
 
 const User = require('../models/user');
 
+const Pool = require('../models/pool');
+
 const Donation = require('../models/donation');
 
 const validateDonation = require('../validation/validateDonation');
@@ -29,6 +31,16 @@ router.post('/', passport.authenticate('jwt', {
     user: req.user._id
   });
   newDonation.save()
+    .then(donation => {
+      Pool.findOne({})
+        .then(pool => {
+          let totalDonation = pool.total + donation.amount;
+          pool.total = totalDonation;
+          console.log('39 pool', pool.total);
+          pool.save();
+        });
+      return donation;
+    })
     .then(donation => res.status(200).json(donation))
     .catch(err => res.status(404).json(err));
 });

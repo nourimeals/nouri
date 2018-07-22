@@ -22,7 +22,7 @@ app.use('/api/v0', require('./routes/routes.js'));
 app.use('/api/v0/users', require('./routes/users.js'));
 app.use('/api/v0/profile', require('./routes/profiles.js'));
 app.use('/api/v0/donations', require('./routes/donations.js'));
-// app.use('/api/v0/meals', require('./routes/meals.js'));
+app.use('/api/v0/meals', require('./routes/meals.js'));
 
 const PORT = process.env.PORT || 3000;
 
