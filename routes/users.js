@@ -15,7 +15,7 @@ const router = express.Router();
 const User = require('../models/user');
 
 
-router.get('/api/v0/users', (req, res) => {
+router.get('/', (req, res) => {
   console.log('hi there this is users');
 });
 

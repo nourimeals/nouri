@@ -31,6 +31,17 @@ const userSchema = new Schema({
     type: String,
 
   },
+  signupDate: {
+    type: Date,
+    default: Date.now
+
+  },
+  isBusinessUser: {
+    type: Boolean,
+    default: false
+
+  },
+
   donations: [{
     donationIds: {
       type: Schema.Types.ObjectId,
@@ -40,15 +51,6 @@ const userSchema = new Schema({
 
   totalDonations: {
     type: Number,
-
-  },
-  signupDate: {
-    type: Date,
-    default: Date.now
-
-  },
-  isBusinessUser: {
-    type: Boolean,
 
   },
 
