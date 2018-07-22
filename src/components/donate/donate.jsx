@@ -9,7 +9,7 @@ class Donate extends React.Component {
   render() {
     return <React.Fragment>
         <Header />
-        <section class="hero">
+        <section className="hero">
           <h1>Make a Donation</h1>
           <form>
             <input placeholder="Amount"/>
@@ -22,7 +22,7 @@ class Donate extends React.Component {
           </form>
         </section> 
 
-        <section class= "sparkle">
+        <section className= "sparkle">
           <div>
             <h3>You helped feed</h3>
             <h2> 82 people </h2>
