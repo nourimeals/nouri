@@ -41,6 +41,7 @@ class Restaurant extends React.Component {
 
   handleFormSubmit(e) {
     e.preventDefault();
+    console.log('state before meal form subit', this.state);
   }
 
   render() {
