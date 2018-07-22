@@ -28,8 +28,8 @@ router.post('/', (req, res) => {
     return res.status(400).json(errors);
   }
   User.findOne({
-      email: req.body.email
-    })
+    email: req.body.email
+  })
     .then(user => {
       if (user) {
         errors.email = 'Email already exists';
@@ -79,8 +79,8 @@ router.post('/signin', (req, res) => {
   }
 
   User.findOne({
-      email
-    })
+    email
+  })
     .then(user => {
       console.log(user, 'user');
       if (!user) {
@@ -94,6 +94,7 @@ router.post('/signin', (req, res) => {
             const payload = {
               id: user._id,
               fname: user.fname,
+              isBusinessUser: user.isBusinessUser,
 
             };
             jwt.sign(
