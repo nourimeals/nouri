@@ -1,5 +1,9 @@
+:root {
+  --text-highlight-color: #01B4BC;
+}
+
 section {
-  padding: 5%;
+  padding: 20% 10%;
 }
 
 h1 {
@@ -10,3 +14,32 @@ h2 {
   text-align: center;
 }
 
+h3 {
+  text-decoration: underline;
+  text-transform: uppercase;
+  color: var(--text-highlight-color);
+  text-align: center;
+}
+
+.stats {
+  color: var(--text-highlight-color);
+  text-align: center;
+  background-color: white;
+  padding: 1em 0;
+  text-decoration: underline;
+  text-transform: uppercase;
+  margin: 3% 0;
+}
+
+.business-info {
+  text-align: center;
+}
+
+.business-info h4 {
+  margin-bottom: 1%;
+  font-weight: 800;
+}
+
+.business-info p {
+  margin: 0;
+}

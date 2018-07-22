@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const mealSchema = new Schema({
-  restaurant : {type: Number, required: true},
+  restaurant : {type: String, required: true},
   date : {type: Date, default: Date.now},
   mealCost: {type: Number, required: true},
   patron: {type: String },
