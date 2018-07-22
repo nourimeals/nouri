@@ -11,6 +11,9 @@ class Donate extends React.Component {
     this.state = {
       _id: '',
       amount: '',
+      cc: '',
+      exp: '',
+      cvv: '',
       displayThankYou: false
     }
 
@@ -25,16 +28,9 @@ class Donate extends React.Component {
   }
 
   handleInputChange(e) {
-    if (e.target.name === 'amount') {
-      this.setState({
-        amount: e.target.value
-      });
-    }
-    if (e.target.name === 'password') {
-      this.setState({
-        password: e.target.value
-      });
-    }
+    this.setState({
+      [e.target.name]: e.target.value
+    })
   }
 
   handleFormSubmit(e) {
@@ -71,6 +67,12 @@ class Donate extends React.Component {
       })
       .then(json => {
         console.log('donate submit json', json);
+        this.setState({
+          amount: '',
+          cc: '',
+          exp: '',
+          cvv: ''
+        });
       })
       .catch(err => {
         console.log(err)
@@ -84,11 +86,11 @@ class Donate extends React.Component {
         {this.state.displayThankYou ? (<p>Thank you so much for your donation! Please check your email for your confirmation.</p>) : (<div></div>)}
         <h1>Make a Donation</h1>
         <form onSubmit={this.handleFormSubmit}>
-          <input onChange={this.handleInputChange} name="amount" placeholder="Amount" />
-          <input placeholder="Email" />
-          <input placeholder="Credit Card" />
-          <input placehold="Expiration" />
-          <input placehold="cvv" />
+          <input value={this.state.amount} onChange={this.handleInputChange} name="amount" placeholder="Amount" />
+          <input value={this.state.email} onChange={this.handleInputChange} name="email" placeholder="Email" />
+          <input value={this.state.cc} onChange={this.handleInputChange} name="cc" placeholder="Credit Card" />
+          <input value={this.state.exp} onChange={this.handleInputChange} name="exp" placeholder="Expiration" />
+          <input value={this.state.cvv} onChange={this.handleInputChange} name="cvv" placeholder="cvv" />
           <button type="submit"> SUBMIT </button>
         </form>
       </section>
