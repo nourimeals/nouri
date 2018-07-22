@@ -6,12 +6,17 @@ import {
 let initialState = {
   isSignedUp: false,
   isSignedIn: false,
+  name: '',
+  isBusinessUser: false,
+  userId: ''
 };
 
 export default function authReducer(state, action) {
   if (state === undefined) {
     return initialState;
   }
+
+  console.log('action json', action.json);
 
   switch(action.type) {
     case USER_SIGNUP:
@@ -20,7 +25,10 @@ export default function authReducer(state, action) {
       });
     case USER_SIGNIN:
       return Object.assign({}, state, {
-        isSignedIn: action.json.isSignedIn
+        isSignedIn: action.json.isSignedIn,
+        name: action.json.name,
+        isBusinessUser: action.json.isBusinessUser,
+        userId: action.json.userId
       });
 
     // break;

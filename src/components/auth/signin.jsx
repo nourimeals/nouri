@@ -1,9 +1,6 @@
 import React from 'react';
-<<<<<<< HEAD
 import {Redirect} from 'react-router-dom';
-=======
 import jwtDecode from 'jwt-decode';
->>>>>>> cc311a5653909a15852c6e8701f4b5c383822915
 import {
   connect
 } from 'react-redux';
@@ -58,7 +55,6 @@ class SignIn extends React.Component {
       .then(res => {
         if (res.status === 200) {
           console.log('Response Status', res);
-
           return res.json();
         } else {
           this.props.userSignIn({
@@ -68,20 +64,21 @@ class SignIn extends React.Component {
       })
       .then(json => {
         console.log('json', json);
-        console.log(json.token, 'token here')
+        console.log(json.token, 'token here');
         window.sessionStorage.token = json.token;
-<<<<<<< HEAD
+
+        const decoded = jwtDecode(json.token);
+        this.props.setCurrentUser(decoded);
+        console.log(decoded, 'this is decoded');
+        return decoded;
+      })
+      .then(decoded => {
         this.props.userSignIn({
           isSignedIn: true,
-          userId: json.userId,
-          isBusinessOwner: json.isBusinessOwner
+          name: decoded.name,
+          userId: decoded.id,
+          isBusinessUser: decoded.isBusinessUser
         })
-=======
-
-        const decoded = jwtDecode(json.token)
-        this.props.setCurrentUser(decoded)
-        console.log(decoded, 'this is decoded')
->>>>>>> cc311a5653909a15852c6e8701f4b5c383822915
       })
       .catch(err => {
         this.props.userSignIn({
@@ -118,7 +115,6 @@ const mapDispatchToProps = (dispatch, getState) => {
   return {
     userSignIn: json => dispatch(userSignIn(json)),
     setCurrentUser: data => dispatch(setCurrentUser(data))
-
   }
 }
 
